@@ -1,0 +1,9 @@
+flask
+flask-cors
+pytesseract
+pillow
+pyautogui
+camelot-py[cv]
+pyperclip
+ghostscript
+opencv-python

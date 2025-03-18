@@ -1,0 +1,92 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.859); 
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center; /* Ensures all elements are centered */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Headland One', serif; 
+}
+  
+p {
+    font-family: 'Playwrite IN', cursive;
+}
+
+.container {
+    text-align: center;
+    background: white;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 0 15px 5px rgba(255, 255, 255, 0.8); /* White glow */
+    width: 600px;
+    margin: auto; /* Ensures proper centering for responsive design */
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+form {
+    margin: 20px 0;
+}
+
+input[type="file"], input[type="text"] {
+    display: block;
+    margin: 15px auto;
+    padding: 10px;
+    border: 2px solid black; 
+    border-radius: 4px; 
+    background-color: orange;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #ff7b00;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+}
+
+button:hover {
+    background-color: #b36500;
+    transform: scale(1.1); /* Slight zoom effect on hover */
+}
+
+#loader {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #007bff;
+    font-family: 'Playwrite IN', cursive;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    height: 200px;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: rgba(0, 0, 0, 0.805);
+}
