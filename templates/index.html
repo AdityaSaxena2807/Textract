@@ -3,26 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Text & Table Extractor</title>
+    <title>Extraction Studio | Text & Table Extractor</title>
     <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <div class="container">
-        <h2>Extract Text from Image</h2>
-        <form id="textForm">
-            <input type="file" name="file" required>
-            <button type="button" onclick="uploadFile('/extract_text', 'textForm', 'textResult')">Extract</button>
-        </form>
-        <p id="textResult"></p>
-
-        <h2>Extract Table from PDF</h2>
-        <form id="tableForm">
-            <input type="file" name="file" required>
-            <input type="text" name="page" placeholder="Enter Page Number (Optional)">
-            <button type="button" onclick="uploadFile('/extract_table', 'tableForm', 'tableResult')">Extract</button>
-        </form>
-        <p id="tableResult"></p>
+<body class="dark-mode">
+    <div class="theme-toggle">
+        <button id="themeToggle">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+        </button>
     </div>
+    <div class="container">
+        <header>
+            <h1><span class="highlight">Extraction</span> Studio</h1>
+            <p class="subtitle">Transform images and PDFs into editable content</p>
+        </header>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="text-extractor">
+                    <i class="fas fa-file-alt"></i> Text Extractor
+                </button>
+                <button class="tab-btn" data-tab="table-extractor">
+                    <i class="fas fa-table"></i> Table Extractor
+                </button>
+            </div>
+            
+            <div id="text-extractor" class="tab-content active">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-text-height"></i> Extract Text from Image</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="textForm">
+                            <div class="file-upload">
+                                <label for="textFile" class="file-label">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                    <span>Choose an Image File</span>
+                                </label>
+                                <input type="file" id="textFile" name="file" class="hidden-input" required>
+                                <span id="textFileName" class="file-name">No file chosen</span>
+                            </div>
+                            <button type="button" class="extract-btn" onclick="uploadFile('/extract_text', 'textForm', 'textResult')">
+                                <i class="fas fa-magic"></i> Extract Text
+                            </button>
+                        </form>
+                        <div class="result-container">
+                            <div class="result-header">
+                                <h3>Extracted Text</h3>
+                                <button id="copyTextBtn" class="copy-btn" disabled><i class="fas fa-copy"></i></button>
+                            </div>
+                            <div id="textResultLoader" class="loader hidden">
+                                <div class="spinner"></div>
+                                <p>Extracting text...</p>
+                            </div>
+                            <textarea id="textResult" placeholder="Extracted text will appear here..." readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="table-extractor" class="tab-content">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-table"></i> Extract Tables from PDF</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="tableForm">
+                            <div class="file-upload">
+                                <label for="tableFile" class="file-label">
+                                    <i class="fas fa-file-pdf"></i>
+                                    <span>Choose a PDF File</span>
+                                </label>
+                                <input type="file" id="tableFile" name="file" class="hidden-input" required>
+                                <span id="tableFileName" class="file-name">No file chosen</span>
+                            </div>
+                            <div class="input-group">
+                                <input type="number" name="page" placeholder="Page Number (Optional)" min="1">
+                            </div>
+                            <button type="button" class="extract-btn" onclick="uploadFile('/extract_table', 'tableForm', 'tableResult')">
+                                <i class="fas fa-table"></i> Extract Table
+                            </button>
+                        </form>
+                        <div class="result-container">
+                            <div class="result-header">
+                                <h3>Extracted Table Data</h3>
+                                <button id="copyTableBtn" class="copy-btn" disabled><i class="fas fa-copy"></i></button>
+                            </div>
+                            <div id="tableResultLoader" class="loader hidden">
+                                <div class="spinner"></div>
+                                <p>Extracting table data...</p>
+                            </div>
+                            <textarea id="tableResult" placeholder="Extracted table data will appear here..." readonly></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 Extraction Studio. All rights reserved.</p>
+        </footer>
+    </div>
+    
     <script src="static/script.js"></script>
 </body>
 </html>
